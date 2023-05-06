@@ -1,70 +1,42 @@
-# Getting Started with Create React App
+# Alpha Shop 1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+虛構電商 Alpha Shop 的結帳模擬頁面
 
-## Available Scripts
+![Index page about Restaurant List](./public/image/snapshot.png)
 
-In the project directory, you can run:
+## Features 功能
 
-### `npm start`
+- 對已加入購物車的商品進行結帳的模擬畫面(不含實際互動功能)
+- 模擬結帳流程進度顯示
+- 模擬付款資訊填寫欄位
+- 模擬結帳流程控制按鈕
+- 模擬顯示購物車商品清單
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Prerequisites 環境建置與需求
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Node.js 14.18.1
+- React 18.2.0
 
-### `npm test`
+## Installation and execution 安裝與執行
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. 請先確認有安裝 node.js 與 npm
+2. 將專案 clone 到本地
+3. 在本地開啟之後，透過終端機進入資料夾，輸入：
 
-### `npm run build`
+   ```bash
+   npm install
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+4. 安裝完畢後，繼續輸入：
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   npm start
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. 打開瀏覽器進入到此網址： http://localhost:3000
 
-### `npm run eject`
+6. 若欲暫停使用
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   ctrl + c
+   ```
