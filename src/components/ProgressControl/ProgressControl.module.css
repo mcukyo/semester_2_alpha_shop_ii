@@ -1,0 +1,71 @@
+@value colors: "../../colors.module.css";
+@value transparent from colors;
+@value ultraLightGray from colors;
+@value grayLight from colors;
+@value grayDark from colors;
+
+.progressControlContainer {
+  width: 85%;
+}
+
+.buttonGroup {
+  display: flex;
+  padding-top: 25px;
+  border-top: 1px solid ultraLightGray;
+}
+
+.buttonGroupAddress {
+  composes: buttonGroup;
+  justify-content: end;
+}
+
+.buttonGroupShipping,
+.buttonGroupCreditCard {
+  composes: buttonGroup;
+  justify-content: space-between;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border: 0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.next {
+  composes: button;
+  width: 35%;
+  color: #ffffff;
+  background-color: rgb(255, 128, 149);
+}
+
+.prev {
+  composes: button;
+  background-color: transparent;
+}
+
+.prev:hover,
+.next:hover {
+  cursor: pointer;
+}
+
+.prev:active,
+.next:active {
+  opacity: 70%;
+}
+
+.leftArrow {
+  fill: #000000;
+  margin-right: 10px;
+  width: 30px;
+  height: 30px;
+}
+
+.rightArrow {
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+}

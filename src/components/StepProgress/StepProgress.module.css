@@ -1,0 +1,65 @@
+@value colors: "../../colors.module.css";
+@value transparent from colors;
+@value ultraLightGray from colors;
+@value grayLight from colors;
+@value grayDark from colors;
+
+.progressContainer {
+  display: flex;
+  width: 85%;
+  align-items: center;
+}
+
+.progressGroup {
+  display: flex;
+  justify-content: center;
+  color: grayLight;
+}
+
+.groupActive {
+  color: #000000;
+}
+
+.progressIcon {
+  display: flex;
+  margin-right: 10px;
+}
+
+.circleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  height: 24px;
+  width: 24px;
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+.circleActive {
+  border-color: grayDark;
+  background-color: grayDark;
+  color: #ffffff;
+}
+
+.pgComplete {
+  width: 24px;
+  height: 24px;
+  display: none;
+}
+
+.completeActive {
+  display: block;
+}
+
+.progressBar {
+  flex: 1;
+  height: 2px;
+  min-width: 30px;
+  margin: 0 5%;
+  background-color: grayLight;
+}
+
+.barActive {
+  background-color: #000000;
+}

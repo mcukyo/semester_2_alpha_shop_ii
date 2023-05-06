@@ -1,0 +1,38 @@
+@value colors: "./colors.module.css";
+@value transparent from colors;
+@value ultraLightGray from colors;
+@value grayLight from colors;
+@value grayDark from colors;
+
+:global(*) {
+  box-sizing: border-box;
+}
+
+.mainContainer {
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-template-rows: auto auto;
+  grid-template-areas:
+    "register cart"
+    "pg-control cart";
+}
+
+.registerContainer {
+  grid-area: register;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartContainer {
+  grid-area: cart;
+  margin-top: 75px;
+  padding: 0 30px;
+  border: 1px solid ultraLightGray;
+  border-radius: 10px;
+}
+
+.progressControl {
+  grid-area: pg-control;
+}
