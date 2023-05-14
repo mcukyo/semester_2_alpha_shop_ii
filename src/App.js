@@ -1,5 +1,6 @@
 // import React, { Component } from 'react';
 // import logo from "./icons/logo-bright.png";
+import { useState } from "react";
 
 import StepProgress from './components/StepProgress/index'
 import Step from './components/Step/index'
@@ -16,7 +17,8 @@ import styles from './App.module.css';
 
 
 function App() {
-  return(
+  const [step, setStep] = useState(1);
+  return (
     <>
       {/* <!-- header --> */}
       {/* <Header/> */}
@@ -25,25 +27,27 @@ function App() {
       <main className="site-main">
         <div className={styles.mainContainer}>
           {/* <!-- register --> */}
-          <section className={styles.registerContainer} data-phase="1" data-total-price="0">
+          <section
+            className={styles.registerContainer}
+            data-phase="1"
+            data-total-price="0"
+          >
             {/* <!-- register-title --> */}
-            <StepProgress/>
+            <StepProgress step={step} />
 
             {/* <!-- register-form --> */}
-            <Step/>
-
+            <Step step={step} />
           </section>
 
           {/* <!-- cart --> */}
           <section className={styles.cartContainer}>
-            <Cart/>
+            <Cart />
           </section>
 
           {/* <!-- progress-control --> */}
           <section className={styles.progressControl}>
-            <ProgressControl/>
+            <ProgressControl step={step} setStep={setStep} />
           </section>
-          
         </div>
       </main>
 

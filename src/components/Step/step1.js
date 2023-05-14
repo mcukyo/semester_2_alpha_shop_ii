@@ -12,7 +12,7 @@ export default function Step1() {
             <div className={styles.inputLabel}>稱謂</div>
             <div className={styles.selectContainer}>
               <select className={styles.select}>
-                <option className={styles.option} value="mr" selected>先生</option>
+                <option className={styles.option} value="mr" defaultValue>先生</option>
                 <option className={styles.option} value="ms">女士</option>
                 <option className={styles.option} value="mx">不明</option>
               </select>

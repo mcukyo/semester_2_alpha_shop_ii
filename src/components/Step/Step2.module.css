@@ -1,0 +1,25 @@
+@value colors: "../../colors.module.css";
+@value transparent from colors;
+@value ultraLightGray from colors;
+@value grayLight from colors;
+@value grayRegular from colors;
+@value midGray from colors;
+@value grayDark from colors;
+
+
+.formWrapper {
+  width: 85%;
+}
+
+.labelgroup {
+  margin-bottom: 20px;
+  padding:10px;
+  border: 1px solid ultraLightGray;
+  border-radius: 5px;
+  display: flex;
+}
+
+.shippingInfo {
+  margin-left: 10px;
+}
+

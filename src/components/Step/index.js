@@ -3,19 +3,30 @@ import Step2 from "./step2"
 import Step3 from "./step3"
 import styles from './Step.module.css';
 
-export default function Step() {
-  return(
-    /* <!-- register-form --> */
-    <section className={styles.registerFormContainer}>
-      {/* <!-- address phase --> */}
-      <Step1/>
-      
-      {/* <!-- shipping phase --> */}
-      {/* <Step2/> */}
-
-      {/* <!-- credit-card phase --> */}
-      {/* <Step3/> */}
-      
-    </section>
-  )
+export default function Step({step}) {
+  if(step === 1) {
+    return(
+      <>
+      <section className={styles.registerFormContainer}>
+      <Step1 />
+      </section>
+      </>
+    ) 
+  } else if(step === 2) {
+    return(
+      <>
+      <section className={styles.registerFormContainer}>
+      <Step2 />
+      </section>
+      </>
+    ) 
+  } else {
+    return(
+      <>
+      <section className={styles.registerFormContainer}>
+      <Step3 />
+      </section>
+      </>
+    ) 
+  }
 }

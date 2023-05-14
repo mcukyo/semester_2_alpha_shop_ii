@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import { useState } from "react";
 import { Fragment } from "react";
-import { ReactComponent as IconMinus } from "../../icons/minus.svg";
-import { ReactComponent as IconPlus } from "../../icons/plus.svg";
+import IconMinus from "../../icons/minus.svg";
+import IconPlus from "../../icons/plus.svg";
 import styles from "./Cart.module.css";
 
 const cartData = [
@@ -10,19 +11,59 @@ const cartData = [
     name: "貓咪罐罐",
     img: "https://picsum.photos/300/300?text=1",
     price: 100,
-    quantity: 2,
+    count: 2,
   },
   {
     id: "2",
     name: "貓咪干干",
     img: "https://picsum.photos/300/300?text=2",
     price: 200,
-    quantity: 1,
+    count: 1,
   },
 ];
 
+function ButtonPlus({onClick}) {
+return <img onClick={onClick} src={IconPlus} alt="" />;
+}
+
+function ButtonMinus({ onClick }) {
+  return <img onClick={onClick} src={IconMinus} alt="" />;
+}
+
 export default function Cart() {
-  const cartList = cartData.map((item) => {
+  const [products, setProducts] = useState(cartData);
+  
+  function handlePlusClick(productId) {
+    setProducts(
+      products.map((product) => {
+        if (product.id === productId) {
+          return {
+            ...product,
+            count: product.count + 1,
+          };
+        } else {
+          return product;
+        }
+      })
+    );
+  }
+
+  function handleMinusClick(productId) {
+    let nextProducts = products.map((product) => {
+      if (product.id === productId) {
+        return {
+          ...product,
+          count: product.count - 1,
+        };
+      } else {
+        return product;
+      }
+    });
+    nextProducts = nextProducts.filter((p) => p.count > 0);
+    setProducts(nextProducts);
+  }
+  
+  const cartList = products.map((item) => {
     return (
       <Fragment key={item.id}>
         <div
@@ -36,13 +77,22 @@ export default function Cart() {
               <div className="product-name">{item.name}</div>
               <div className={styles.productControlContainer}>
                 <div className={styles.productControl}>
-                  <IconMinus />
-                  <span className={styles.productCount}>{item.quantity}</span>
-                  <IconPlus />
+                  {/* <IconMinus /> */}
+                  <ButtonMinus
+                    onClick={() => {
+                      handleMinusClick(item.id);
+                    }}
+                  />
+                  <span className={styles.productCount}>{item.count}</span>
+                  <ButtonPlus
+                    onClick={() => {
+                      handlePlusClick(item.id);
+                    }}
+                  />
                 </div>
               </div>
             </div>
-            <div className={styles.price}>${item.price * item.quantity}</div>
+            <div className={styles.price}>${item.price * item.count}</div>
           </div>
         </div>
       </Fragment>
@@ -50,8 +100,8 @@ export default function Cart() {
   })
 
   let totalPrice = 0
-  for(let i = 0; i < cartData.length; i++) {
-    totalPrice += cartData[i].price * cartData[i].quantity
+  for (let i = 0; i < products.length; i++) {
+    totalPrice += products[i].price * products[i].count;
   }
 
   return (
