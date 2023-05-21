@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { useState } from 'react'
+import { useState } from "react";
 
-import styles from './ProgressControl.module.css'
+import styles from "./ProgressControl.module.css";
 // import leftArrow from '../../icons/left-arrow.svg';
-import rightArrow from '../../icons/right-arrow.svg';
+import rightArrow from "../../icons/right-arrow.svg";
 
-import { ReactComponent as LeftArrow } from '../../icons/left-arrow.svg'
-
+import { ReactComponent as LeftArrow } from "../../icons/left-arrow.svg";
 
 // class LeftArrowFill extends Component {
 //   render() {
@@ -30,7 +29,7 @@ function Button({ onClick, className, children }) {
   );
 }
 
-function NextButton({onClick}) {
+function NextButton({ onClick }) {
   // console.log(onClick)
   return (
     <Button onClick={onClick} className={styles.next}>
@@ -50,26 +49,26 @@ function PrevButton({ onClick }) {
   );
 }
 
+function ConfirmButton({ onClick }) {
+  return (
+    <Button onClick={onClick} className={styles.next}>
+      確認下單
+    </Button>
+  );
+}
 
-export default function ProgressControl({step, setStep}) {
-  
-  function handleNextClick() {
-    if(step<=2){
-      setStep(step + 1);
-    }
-  }
-  function handlePrevClick() {
-    if (step >= 2) {
-      setStep(step - 1);
-    }
-  }
-
-  
+export default function ProgressControl({
+  onNextClick,
+  onPrevClick,
+  onConfirmClick,
+  step,
+  setStep,
+}) {
   if (step === 1) {
     return (
       <section className={styles.progressControlContainer}>
         <section className={styles.buttonGroupAddress} data-phase="address">
-          <NextButton onClick={handleNextClick} />
+          <NextButton onClick={onNextClick} />
         </section>
       </section>
     );
@@ -77,8 +76,8 @@ export default function ProgressControl({step, setStep}) {
     return (
       <section className={styles.progressControlContainer}>
         <section className={styles.buttonGroupShipping} data-phase="shipping">
-          <PrevButton onClick={handlePrevClick} />
-          <NextButton onClick={handleNextClick} />
+          <PrevButton onClick={onPrevClick} />
+          <NextButton onClick={onNextClick} />
         </section>
       </section>
     );
@@ -86,12 +85,13 @@ export default function ProgressControl({step, setStep}) {
     return (
       <section className={styles.progressControlContainer}>
         <section className={styles.buttonGroupCreditCard} data-phase="shipping">
-          <PrevButton onClick={handlePrevClick} />
-          <button className={styles.next}>確認下單</button>
+          <PrevButton onClick={onPrevClick} />
+          {/* <button className={styles.next}>確認下單</button> */}
+          <ConfirmButton onClick={onConfirmClick} />
         </section>
       </section>
     );
-  } 
+  }
 
   // return (
   //   /* <!-- progress-control --> */

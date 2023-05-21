@@ -11,10 +11,23 @@
   width: 85%;
 }
 
+/* .formSection {
+  display: flex;
+  flex-wrap: wrap;
+} */
+
 .formColumn {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+
+.inputLong {
+  width: 60%;
+}
+
+.inputShort {
+  width: 50%;
 }
 
 .inputLabel {

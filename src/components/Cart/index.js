@@ -1,68 +1,24 @@
 import React, { Component } from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Fragment } from "react";
 import IconMinus from "../../icons/minus.svg";
 import IconPlus from "../../icons/plus.svg";
 import styles from "./Cart.module.css";
 
-const cartData = [
-  {
-    id: "1",
-    name: "貓咪罐罐",
-    img: "https://picsum.photos/300/300?text=1",
-    price: 100,
-    count: 2,
-  },
-  {
-    id: "2",
-    name: "貓咪干干",
-    img: "https://picsum.photos/300/300?text=2",
-    price: 200,
-    count: 1,
-  },
-];
+import { CartContext } from "../../Contexts/CartContext.js";
 
-function ButtonPlus({onClick}) {
-return <img onClick={onClick} src={IconPlus} alt="" />;
+function ButtonPlus({ onClick }) {
+  return <img onClick={onClick} src={IconPlus} alt="" />;
 }
 
 function ButtonMinus({ onClick }) {
   return <img onClick={onClick} src={IconMinus} alt="" />;
 }
 
-export default function Cart() {
-  const [products, setProducts] = useState(cartData);
-  
-  function handlePlusClick(productId) {
-    setProducts(
-      products.map((product) => {
-        if (product.id === productId) {
-          return {
-            ...product,
-            count: product.count + 1,
-          };
-        } else {
-          return product;
-        }
-      })
-    );
-  }
+export default function Cart({ products, onPlusClick, onMinusClick }) {
+  // const cart = useContext(CartContext);
+  // const [products, setProducts] = useState(cart);
 
-  function handleMinusClick(productId) {
-    let nextProducts = products.map((product) => {
-      if (product.id === productId) {
-        return {
-          ...product,
-          count: product.count - 1,
-        };
-      } else {
-        return product;
-      }
-    });
-    nextProducts = nextProducts.filter((p) => p.count > 0);
-    setProducts(nextProducts);
-  }
-  
   const cartList = products.map((item) => {
     return (
       <Fragment key={item.id}>
@@ -80,13 +36,13 @@ export default function Cart() {
                   {/* <IconMinus /> */}
                   <ButtonMinus
                     onClick={() => {
-                      handleMinusClick(item.id);
+                      onMinusClick(item.id);
                     }}
                   />
                   <span className={styles.productCount}>{item.count}</span>
                   <ButtonPlus
                     onClick={() => {
-                      handlePlusClick(item.id);
+                      onPlusClick(item.id);
                     }}
                   />
                 </div>
@@ -97,9 +53,9 @@ export default function Cart() {
         </div>
       </Fragment>
     );
-  })
+  });
 
-  let totalPrice = 0
+  let totalPrice = 0;
   for (let i = 0; i < products.length; i++) {
     totalPrice += products[i].price * products[i].count;
   }

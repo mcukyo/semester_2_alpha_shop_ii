@@ -3,7 +3,7 @@ import Step2 from "./step2"
 import Step3 from "./step3"
 import styles from './Step.module.css';
 
-export default function Step({step}) {
+export default function Step({step, onChange}) {
   if(step === 1) {
     return(
       <>
@@ -24,7 +24,7 @@ export default function Step({step}) {
     return(
       <>
       <section className={styles.registerFormContainer}>
-      <Step3 />
+      <Step3 onChange={onChange}/>
       </section>
       </>
     ) 
