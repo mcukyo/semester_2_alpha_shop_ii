@@ -1,5 +1,3 @@
-// import React, { Component } from 'react';
-// import logo from "./icons/logo-bright.png";
 import { useState, useContext } from "react";
 
 import StepProgress from "./components/StepProgress/index";
@@ -9,7 +7,6 @@ import Cart from "./components/Cart/index";
 import Header from "./components/Header/index";
 import Footer from "./components/Footer/index";
 
-// import { ReactComponent as Logo } from './icons/logo-bright.png'
 import "./App.css";
 import styles from "./App.module.css";
 
@@ -22,10 +19,9 @@ function App() {
   const [products, setProducts] = useState(cartData);
   const formData = useContext(FormContext);
   const [forms, setForms] = useState(formData);
-const totalPrice = products
-  .map((data) => data.price * data.count)
-  .reduce((acc, cur) => acc + cur);
-
+  const totalPrice = products
+    .map((data) => data.price * data.count)
+    .reduce((acc, cur) => acc + cur);
 
   function handlePlusClick(productId) {
     setProducts(
@@ -69,47 +65,30 @@ const totalPrice = products
     }
   }
 
- function handleSubmit() {
-   forms.map((data) => {
-     return console.log(`${data.label}: ${data.dataValue}`);
-   });
-   return console.log(`購物車總金額：${totalPrice}`);
- }
+  function handleSubmit() {
+    forms.map((data) => {
+      return console.log(`${data.label}: ${data.dataValue}`);
+    });
+    return console.log(`購物車總金額：${totalPrice}`);
+  }
 
-    function handleConfirmClick() {
-      handleSubmit();
-      // setForms(formData);
-      console.log(forms);
-    }
+  function handleConfirmClick() {
+    handleSubmit();
+  }
 
-  
-
-  function handleChange({ name, value }) {
-    setForms((prevData) => {
-      return prevData.map((data) => {
-        if (data.name === name) {
+function handleChange({ name, value }) {
+    setForms(
+      forms.map((form) => {
+        if (form.name === name) {
           return {
-            ...data,
+            ...form,
             dataValue: value,
           };
         }
-        return data;
-      });
-    });
+        return form;
+      })
+    );
   }
-  // function handleChange({ value, dataName }) {
-  //   setForms(
-  //     forms.map((form) => {
-  //       if (form.name === dataName) {
-  //         return {
-  //           ...form,
-  //           dataValue: value,
-  //         };
-  //       }
-  //       return form;
-  //     })
-  //   );
-  // }
 
   return (
     <>
@@ -139,7 +118,6 @@ const totalPrice = products
                 <Cart
                   onPlusClick={handlePlusClick}
                   onMinusClick={handleMinusClick}
-                  products={products}
                 />
               </CartContext.Provider>
             </section>
