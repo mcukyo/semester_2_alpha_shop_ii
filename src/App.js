@@ -22,6 +22,10 @@ function App() {
   const [products, setProducts] = useState(cartData);
   const formData = useContext(FormContext);
   const [forms, setForms] = useState(formData);
+const totalPrice = products
+  .map((data) => data.price * data.quantity)
+  .reduce((acc, cur) => acc + cur);
+
 
   function handlePlusClick(productId) {
     setProducts(
@@ -65,15 +69,15 @@ function App() {
     }
   }
 
-//  function handleSubmit() {
-//    forms.map((data) => {
-//      return console.log(`${data.label}: ${data.value}`);
-//    });
-//    return console.log(`購物車總金額：${totalPrice}`);
-//  }
+ function handleSubmit() {
+   forms.map((data) => {
+     return console.log(`${data.label}: ${data.dataValue}`);
+   });
+   return console.log(`購物車總金額：${totalPrice}`);
+ }
 
     function handleConfirmClick() {
-      // handleSubmit();
+      handleSubmit();
       // setForms(formData);
       console.log(forms);
     }
