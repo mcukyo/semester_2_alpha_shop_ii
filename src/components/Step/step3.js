@@ -33,7 +33,7 @@ export default function Step3({ onChange }) {
     <form className={styles.formWrapper} data-phase="credit-card">
       <h3 class="form-title">付款資訊</h3>
       <section className={styles.formSection}>
-        <FormList onChange={onChange} />
+        <FormList onChange={({value, name})=>onChange({value, name})} />
         {/* <div className={styles.formColumn}>
           <div class="input-group input-w-lg-4 input-w-sm-full">
             <div className={styles.inputLabel}>持卡人姓名</div>

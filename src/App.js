@@ -65,21 +65,28 @@ function App() {
     }
   }
 
+//  function handleSubmit() {
+//    forms.map((data) => {
+//      return console.log(`${data.label}: ${data.value}`);
+//    });
+//    return console.log(`購物車總金額：${totalPrice}`);
+//  }
+
     function handleConfirmClick() {
-      console.log("forms是：" + forms + "formData是：" + formData);
+      // handleSubmit();
+      // setForms(formData);
+      console.log(forms);
     }
 
   
 
   function handleChange({ name, value }) {
-    
-
     setForms((prevData) => {
       return prevData.map((data) => {
         if (data.name === name) {
           return {
             ...data,
-            value: value,
+            dataValue: value,
           };
         }
         return data;
