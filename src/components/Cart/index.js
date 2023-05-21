@@ -15,8 +15,8 @@ function ButtonMinus({ onClick }) {
   return <img onClick={onClick} src={IconMinus} alt="" />;
 }
 
-export default function Cart({ products, onPlusClick, onMinusClick }) {
-  // const cart = useContext(CartContext);
+export default function Cart({ onPlusClick, onMinusClick }) {
+  const products = useContext(CartContext);
   // const [products, setProducts] = useState(cart);
 
   const cartList = products.map((item) => {

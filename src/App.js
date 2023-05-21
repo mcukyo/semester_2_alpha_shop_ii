@@ -23,7 +23,7 @@ function App() {
   const formData = useContext(FormContext);
   const [forms, setForms] = useState(formData);
 const totalPrice = products
-  .map((data) => data.price * data.quantity)
+  .map((data) => data.price * data.count)
   .reduce((acc, cur) => acc + cur);
 
 
