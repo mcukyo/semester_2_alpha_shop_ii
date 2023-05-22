@@ -76,7 +76,7 @@ function App() {
     handleSubmit();
   }
 
-function handleChange({ name, value }) {
+  function handleChange({ name, value }) {
     setForms(
       forms.map((form) => {
         if (form.name === name) {
@@ -118,6 +118,7 @@ function handleChange({ name, value }) {
                 <Cart
                   onPlusClick={handlePlusClick}
                   onMinusClick={handleMinusClick}
+                  totalPrice={totalPrice}
                 />
               </CartContext.Provider>
             </section>

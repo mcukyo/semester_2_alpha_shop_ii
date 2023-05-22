@@ -14,55 +14,44 @@ function ButtonMinus({ onClick }) {
   return <img onClick={onClick} src={IconMinus} alt="" />;
 }
 
-export default function Cart({ onPlusClick, onMinusClick }) {
+export default function Cart({ onPlusClick, onMinusClick, totalPrice }) {
   const products = useContext(CartContext);
 
   function CartList() {
     return products.map((item) => {
       return (
-        <Fragment key={item.id}>
-          <div
-            className={styles.productContainer}
-            data-count="0"
-            data-price="3999"
-          >
-            <img
-              className={styles.imgContainer}
-              src={item.img}
-              alt="product 1"
-            />
-            <div className={styles.productInfo}>
-              <div>
-                <div className="product-name">{item.name}</div>
-                <div className={styles.productControlContainer}>
-                  <div className={styles.productControl}>
-                    {/* <IconMinus /> */}
-                    <ButtonMinus
-                      onClick={() => {
-                        onMinusClick(item.id);
-                      }}
-                    />
-                    <span className={styles.productCount}>{item.count}</span>
-                    <ButtonPlus
-                      onClick={() => {
-                        onPlusClick(item.id);
-                      }}
-                    />
-                  </div>
+        <div
+          key={item.id}
+          className={styles.productContainer}
+          data-count="0"
+          data-price="3999"
+        >
+          <img className={styles.imgContainer} src={item.img} alt="product 1" />
+          <div className={styles.productInfo}>
+            <div>
+              <div className="product-name">{item.name}</div>
+              <div className={styles.productControlContainer}>
+                <div className={styles.productControl}>
+                  {/* <IconMinus /> */}
+                  <ButtonMinus
+                    onClick={() => {
+                      onMinusClick(item.id);
+                    }}
+                  />
+                  <span className={styles.productCount}>{item.count}</span>
+                  <ButtonPlus
+                    onClick={() => {
+                      onPlusClick(item.id);
+                    }}
+                  />
                 </div>
               </div>
-              <div className={styles.price}>${item.price * item.count}</div>
             </div>
+            <div className={styles.price}>${item.price * item.count}</div>
           </div>
-        </Fragment>
+        </div>
       );
     });
-  }
-  
-
-  let totalPrice = 0;
-  for (let i = 0; i < products.length; i++) {
-    totalPrice += products[i].price * products[i].count;
   }
 
   return (
